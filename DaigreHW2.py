@@ -33,8 +33,13 @@ def gameLoop(gameBoard):
 def rollDie():
     return Direction(random.randint(1,4))
 
-def getIntFromUser(message):
-    while
+# Gets a number from the user withion a particular range. 
+# prints a particualr message initialy, specified by caller.
+def getIntFromUserInRange(message, minValue, maxValue):
+    userInput = input(message)
+    while !( isinstance(userInput, int) && userInput <= maxValue && userInput >= minValue ):
+        userInput = input(f"Please enter a number between {minValue} and {maxValue} inclusive:")
+    return userInput
 
 # Opens the output file and writes the passed string to it.
 def openOutputFileAndWriteContents(outputData):
@@ -171,13 +176,16 @@ programIntro = "This program simulates a game where the player randomly moves ar
 logToFile += programIntro + "\n"
 print(programIntro)
 # Initialise the gameboard
-gameBoard = GameBoard()
-# Initialise game loop
-gameBoard = gameLoop(gameBoard)
-# log and print end info
-logToFile += gameBoard.movesLog
-gameStats = f"Total moves: {gameBoard.getTotalMoves()}\nAverage number of dots: {gameBoard.getAverageDots()}\nMaximum number of dots: {gameBoard.getMaxDots()}"
-logToFile += gameStats
-print(gameStats)
+boardSize = getIntFromUserInRange("Specify a size for the board:")
+numberOfRuns = getIntFromUserInRange("Specify a number of runs:")
+for n in numberOfRuns:  
+    gameBoard = GameBoard(boardSize)
+    # Initialise game loop
+    gameBoard = gameLoop(gameBoard)
+    # log and print end info
+    logToFile += gameBoard.movesLog
+    gameStats = f"Total moves: {gameBoard.getTotalMoves()}\nAverage number of dots: {gameBoard.getAverageDots()}\nMaximum number of dots: {gameBoard.getMaxDots()}"
+    logToFile += gameStats
+    print(gameStats)
 #print loged data to file
 openOutputFileAndWriteContents(logToFile)

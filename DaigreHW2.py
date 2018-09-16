@@ -33,6 +33,9 @@ def gameLoop(gameBoard):
 def rollDie():
     return Direction(random.randint(1,4))
 
+def getIntFromUser(message):
+    while
+
 # Opens the output file and writes the passed string to it.
 def openOutputFileAndWriteContents(outputData):
     fileName = "HW2daigreOutfile.txt"
@@ -51,7 +54,7 @@ class Direction(Enum):
 class GameBoard:
     # 2D array representing the board. 0,0 starts at one as 
     # this is where the player begins.
-    boardSpaces = [[1],[0,0],[0,0,0],[0,0,0,0],[0,0,0,0,0],[0,0,0,0,0,0]]
+    boardSpaces = []
     MAXROW = 5
     currentRow = 0
     currentCollumn = 0
@@ -59,7 +62,10 @@ class GameBoard:
     movesLog = ""
 
     #when class is created log the players starting position
-    def __init__(self):
+    def __init__(self, numberOfRows):
+        for row in numberOfRows:
+            boardSpaces.appened([0]*row+1)
+        boardSpaces[0][0] = 1
         startPosition = self.getCurrentPositionAsNumber() 
         self.logMoveData(f"{startPosition}, ")
 
@@ -107,8 +113,9 @@ class GameBoard:
     
     # Gets the current position as a sigle number instead of a tuple
     def getCurrentPositionAsNumber(self):
-        boardNumbers = [[1],[2,3],[4,5,6],[7,8,9,10],[11,12,13,14,15],[16,17,18,19,20,21]]
-        return boardNumbers[self.currentRow][self.currentCollumn]
+        sumOfPreviousRows = (self.currentRow * (self.currentRow +1)) /2
+        currentPosition = sumOfPreviousRows + (self.currentCollumn + 1)
+        return currentPosition
 
     #combines the actions of printing and recording log data, for convience.
     def logMoveData(self, dataToLog):

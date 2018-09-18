@@ -1,7 +1,109 @@
 This program simulates a game where the player randomly moves around a triangular game board. The player can move in four directions: up left, up right, down right, down left. Whenever the player moves to a new position on the board the player markes that positon with a dot. The game ends when all positions have been marked. As the program runs, the game prints the current position. When the game completes, the program prints some stats about the game that just concluded.
 
-1, 1, 2, 2, 4, 4, 7, 12, 18, 13, 18, 18, 13, 9, 5, 2, 5, 3, 3, 1, 3, 5, 8, 4, 7, 7, 4, 2, 1, 2, 2, 5, 9, 6, 9, 13, 18, 18, 18, 18, 18, 12, 8, 12, 7, 11, 7, 11, 17, 11, 7, 7, 12, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 13, 19, 14, 20, 20, 20, 20, 20, 20, 20, 20, 20, 15, 21, 21, 21, 21, 15, 20, 20, 14, 10, 15, 21, 21, 15, 20, 14, 9, 13, 9, 14, 20, 20, 14, 19, 19, 19, 13, 18, 12, 17, 12, 8, 4, 7, 12, 7, 11, 17, 17, 12, 7, 7, 4, 4, 2, 2, 2, 5, 3, 1, 1, 3, 1, 2, 2, 2, 2, 2, 2, 5, 9, 6, 10, 10, 15, 15, 15, 15, 20, 20, 15, 21, 21, 15, 10, 15, 15, 15, 15, 20, 14, 20, 20, 15, 20, 14, 20, 20, 15, 21, 21, 15, 10, 10, 14, 10, 15, 10, 10, 14, 10, 10, 15, 15, 15, 21, 21, 21, 21, 21, 21, 15, 20, 20, 14, 19, 19, 14, 10, 15, 20, 20, 20, 15, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 15, 21, 15, 21, 21, 21, 21, 21, 15, 10, 10, 14, 9, 6, 10, 6, 6, 6, 10, 10, 10, 15, 20, 15, 15, 20, 20, 15, 21, 15, 21, 21, 21, 15, 21, 21, 15, 21, 21, 21, 21, 15, 21, 21, 21, 21, 21, 15, 21, 21, 21, 15, 21, 21, 21, 15, 10, 10, 6, 10, 6, 9, 13, 8, 5, 8, 12, 7, 7, 12, 17, 17, 17, 17, 17, 11, 11, 17, 17, 17, 11, 16, 16.
-
-Total moves: 295
-Average number of dots: 14.095238095238095
-Maximum number of dots: 54
+Total moves: 8142
+Average number of dots: 25.055384615384614
+Maximum number of dots: 57Total moves: 4367
+Average number of dots: 13.44
+Maximum number of dots: 41Total moves: 8846
+Average number of dots: 27.22153846153846
+Maximum number of dots: 67Total moves: 9653
+Average number of dots: 29.704615384615384
+Maximum number of dots: 112Total moves: 9177
+Average number of dots: 28.24
+Maximum number of dots: 72Total moves: 5167
+Average number of dots: 15.901538461538461
+Maximum number of dots: 45Total moves: 6707
+Average number of dots: 20.64
+Maximum number of dots: 100Total moves: 6448
+Average number of dots: 19.84307692307692
+Maximum number of dots: 52Total moves: 5701
+Average number of dots: 17.544615384615383
+Maximum number of dots: 75Total moves: 3519
+Average number of dots: 10.830769230769231
+Maximum number of dots: 44Total moves: 5866
+Average number of dots: 18.052307692307693
+Maximum number of dots: 64Total moves: 6924
+Average number of dots: 21.307692307692307
+Maximum number of dots: 66Total moves: 24194
+Average number of dots: 74.44615384615385
+Maximum number of dots: 143Total moves: 13770
+Average number of dots: 42.37230769230769
+Maximum number of dots: 103Total moves: 6256
+Average number of dots: 19.252307692307692
+Maximum number of dots: 48Total moves: 6163
+Average number of dots: 18.966153846153848
+Maximum number of dots: 60Total moves: 4805
+Average number of dots: 14.787692307692307
+Maximum number of dots: 80Total moves: 9135
+Average number of dots: 28.110769230769233
+Maximum number of dots: 69Total moves: 5449
+Average number of dots: 16.76923076923077
+Maximum number of dots: 47Total moves: 19087
+Average number of dots: 58.73230769230769
+Maximum number of dots: 114Total moves: 13271
+Average number of dots: 40.83692307692308
+Maximum number of dots: 85Total moves: 8864
+Average number of dots: 27.276923076923076
+Maximum number of dots: 86Total moves: 11149
+Average number of dots: 34.30769230769231
+Maximum number of dots: 98Total moves: 14473
+Average number of dots: 44.535384615384615
+Maximum number of dots: 95Total moves: 7039
+Average number of dots: 21.661538461538463
+Maximum number of dots: 52Total moves: 4611
+Average number of dots: 14.19076923076923
+Maximum number of dots: 48Total moves: 7546
+Average number of dots: 23.22153846153846
+Maximum number of dots: 95Total moves: 7856
+Average number of dots: 24.175384615384615
+Maximum number of dots: 72Total moves: 11754
+Average number of dots: 36.16923076923077
+Maximum number of dots: 116Total moves: 6780
+Average number of dots: 20.864615384615384
+Maximum number of dots: 60Total moves: 5873
+Average number of dots: 18.073846153846155
+Maximum number of dots: 60Total moves: 10322
+Average number of dots: 31.763076923076923
+Maximum number of dots: 89Total moves: 7395
+Average number of dots: 22.756923076923076
+Maximum number of dots: 50Total moves: 5052
+Average number of dots: 15.547692307692307
+Maximum number of dots: 51Total moves: 10432
+Average number of dots: 32.10153846153846
+Maximum number of dots: 74Total moves: 10807
+Average number of dots: 33.255384615384614
+Maximum number of dots: 93Total moves: 7524
+Average number of dots: 23.153846153846153
+Maximum number of dots: 48Total moves: 11198
+Average number of dots: 34.45846153846154
+Maximum number of dots: 94Total moves: 9635
+Average number of dots: 29.64923076923077
+Maximum number of dots: 66Total moves: 8360
+Average number of dots: 25.726153846153846
+Maximum number of dots: 96Total moves: 10417
+Average number of dots: 32.05538461538462
+Maximum number of dots: 69Total moves: 13434
+Average number of dots: 41.33846153846154
+Maximum number of dots: 144Total moves: 6913
+Average number of dots: 21.273846153846154
+Maximum number of dots: 54Total moves: 12870
+Average number of dots: 39.60307692307693
+Maximum number of dots: 189Total moves: 9077
+Average number of dots: 27.932307692307692
+Maximum number of dots: 63Total moves: 18550
+Average number of dots: 57.08
+Maximum number of dots: 130Total moves: 10752
+Average number of dots: 33.08615384615385
+Maximum number of dots: 70Total moves: 20042
+Average number of dots: 61.67076923076923
+Maximum number of dots: 122Total moves: 22105
+Average number of dots: 68.01846153846154
+Maximum number of dots: 176Total moves: 12521
+Average number of dots: 38.52923076923077
+Maximum number of dots: 93Stats based on all games played: 
+        Fewest moves in a single game:3519 
+        Most moves in a single game:24194 
+        Average moves across all games:9719.96 
+        Fewest maximum dots in a single game:41 
+        Most maximum dots in a single game:189 
+        Average maximum dots across all games:81.94

@@ -17,7 +17,9 @@
 #   https://docs.python.org/3/library/enum.html
 #   https://stackoverflow.com/questions/25902690/typeerror-init-takes-0-positional-arguments-but-1-was-given
 #   https://docs.python.org/3/tutorial/classes.html
-#   
+#   https://medium.com/programminginpython-com/python-program-to-find-the-largest-and-smallest-number-in-a-list-fd8fac8aba08
+#   https://www.programiz.com/python-programming/methods/built-in/sum
+#   https://stackoverflow.com/questions/10660435/pythonic-way-to-create-a-long-multi-line-string
 
 import random
 from enum import Enum
@@ -36,10 +38,45 @@ def rollDie():
 # Gets a number from the user withion a particular range. 
 # prints a particualr message initialy, specified by caller.
 def getIntFromUserInRange(message, minValue, maxValue):
-    userInput = input(message)
-    while !( isinstance(userInput, int) && userInput <= maxValue && userInput >= minValue ):
+    try:
+        userInput = int(input(message))
+    except:
+        pass
+    while not (isinstance(userInput, int) and (userInput <= maxValue) and (userInput >= minValue)):
         userInput = input(f"Please enter a number between {minValue} and {maxValue} inclusive:")
+        try:
+            userInput = int(userInput)
+        except:
+            pass
     return userInput
+
+# Gets the users choice if they want to run in verbose mode (printing moves as they are made) 
+# returns true or false based on users choice
+def getVerboseModeFromUser():
+    userInput = input("Print moves to the screen as they are made? (y/n):")
+    while not ((userInput == "y") or (userInput == "n")):
+        userInput = input("Please enter 'y' or 'n':")
+    return userInput
+
+#Create a sting with the final game stats
+def generateFinalStats(movesOverall, dotsOverall):
+    overallMinDots, overallMaxDots, overallAverageDots = getMinMaxAndAverageFromListOfInts(dotsOverall)
+    overallMinMoves, overallMaxMoves, overallAverageMoves = getMinMaxAndAverageFromListOfInts(movesOverall)
+    return f"""Stats based on all games played: 
+        Fewest moves in a single game:{overallMinMoves} 
+        Most moves in a single game:{overallMaxMoves} 
+        Average moves across all games:{overallAverageMoves} 
+        Fewest maximum dots in a single game:{overallMinDots} 
+        Most maximum dots in a single game:{overallMaxDots} 
+        Average maximum dots across all games:{overallAverageDots}"""
+
+
+# Generate the minimum, maximum, and average values from a list of ints
+def getMinMaxAndAverageFromListOfInts(arrayOfInts):
+    average = sum(arrayOfInts, 0) / len(arrayOfInts)
+    maximum = max(arrayOfInts)
+    minimum = min(arrayOfInts)
+    return minimum, maximum, average
 
 # Opens the output file and writes the passed string to it.
 def openOutputFileAndWriteContents(outputData):
@@ -60,17 +97,20 @@ class GameBoard:
     # 2D array representing the board. 0,0 starts at one as 
     # this is where the player begins.
     boardSpaces = []
-    MAXROW = 5
     currentRow = 0
     currentCollumn = 0
+    runInVerboseMode = True
 
     movesLog = ""
 
     #when class is created log the players starting position
-    def __init__(self, numberOfRows):
-        for row in numberOfRows:
-            boardSpaces.appened([0]*row+1)
-        boardSpaces[0][0] = 1
+    def __init__(self, numberOfRows, runInVerboseMode):
+        self.runInVerboseMode = runInVerboseMode
+        self.boardSpaces = []
+        for row in range(numberOfRows):
+            newList = [0] * (row + 1)
+            self.boardSpaces.append(newList)
+        self.boardSpaces[0][0] = 1
         startPosition = self.getCurrentPositionAsNumber() 
         self.logMoveData(f"{startPosition}, ")
 
@@ -124,8 +164,9 @@ class GameBoard:
 
     #combines the actions of printing and recording log data, for convience.
     def logMoveData(self, dataToLog):
-        print(dataToLog, end = "")
-        self.movesLog += dataToLog
+        if (self.runInVerboseMode == True):
+            print(dataToLog, end = "")
+            self.movesLog += dataToLog
 
     # Get the value of the next position requested.
     # Check if that value is valid.
@@ -149,7 +190,7 @@ class GameBoard:
         
         # Check if our location is out of bounds, if so add 1 to 
         #  current space and return.
-        if newRow < 0 or newRow > 5:
+        if newRow < 0 or newRow > (len(self.boardSpaces) - 1):
             self.boardSpaces[self.currentRow][self.currentCollumn] += 1
             currentPosition = self.getCurrentPositionAsNumber()
             self.logMoveData(f"{currentPosition}, ")
@@ -173,19 +214,27 @@ class GameBoard:
 # Log and print intro info
 logToFile = ""
 programIntro = "This program simulates a game where the player randomly moves around a triangular game board. The player can move in four directions: up left, up right, down right, down left. Whenever the player moves to a new position on the board the player markes that positon with a dot. The game ends when all positions have been marked. As the program runs, the game prints the current position. When the game completes, the program prints some stats about the game that just concluded.\n"
+movesOverall = []
+dotsOverall = []
 logToFile += programIntro + "\n"
 print(programIntro)
 # Initialise the gameboard
-boardSize = getIntFromUserInRange("Specify a size for the board:")
-numberOfRuns = getIntFromUserInRange("Specify a number of runs:")
-for n in numberOfRuns:  
-    gameBoard = GameBoard(boardSize)
+boardSize = getIntFromUserInRange("Specify a size for the board:", 2, 25)
+numberOfRuns = getIntFromUserInRange("Specify a number of runs:", 10, 50)
+verboseChoise = getVerboseModeFromUser()
+for n in range(numberOfRuns):  
+    gameBoard = GameBoard(boardSize, verboseChoise)
     # Initialise game loop
     gameBoard = gameLoop(gameBoard)
     # log and print end info
     logToFile += gameBoard.movesLog
     gameStats = f"Total moves: {gameBoard.getTotalMoves()}\nAverage number of dots: {gameBoard.getAverageDots()}\nMaximum number of dots: {gameBoard.getMaxDots()}"
+    movesOverall.append(gameBoard.getTotalMoves())
+    dotsOverall.append(gameBoard.getMaxDots())
     logToFile += gameStats
     print(gameStats)
+finalStats = generateFinalStats(movesOverall, dotsOverall)
+logToFile += finalStats
+print(finalStats)
 #print loged data to file
 openOutputFileAndWriteContents(logToFile)

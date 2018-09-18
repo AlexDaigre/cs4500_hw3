@@ -63,7 +63,10 @@ def getVerboseModeFromUser():
     userInput = input("Print moves to the screen as they are made? (y/n):")
     while not ((userInput == "y") or (userInput == "n")):
         userInput = input("Please enter 'y' or 'n':")
-    return userInput
+    if (userInput == "y"):
+        return True
+    else:
+        return False
 
 #Create a sting with the final game stats
 def generateFinalStats(movesOverall, dotsOverall):

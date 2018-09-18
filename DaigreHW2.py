@@ -9,8 +9,15 @@
 #   on the board the player markes that positon with a dot. The game ends when
 #   all positions have been marked. As the program runs, the game prints the 
 #   current position. When the game completes, the program prints some stats
-#   about the game that just concluded.
+#   about the game that just concluded. When all games have completed, the program 
+#   prints some stats about all the games.
 # External Files:
+#   Standard Library Inputs:
+#       Random: Used to generate the random numbers for movements
+#       Enum: used to generate the enum for representing movement
+#   Output Files:
+#       HW3daigreOutfile.txt: This file contains the same output that is printed to 
+#       the screen. Detailed above.
 # Sources:
 #   https://www.w3schools.com/python/python_classes.asp
 #   https://stackoverflow.com/questions/11264684/flatten-list-of-lists/11264799
@@ -80,7 +87,7 @@ def getMinMaxAndAverageFromListOfInts(arrayOfInts):
 
 # Opens the output file and writes the passed string to it.
 def openOutputFileAndWriteContents(outputData):
-    fileName = "HW2daigreOutfile.txt"
+    fileName = "HW3daigreOutfile.txt"
     with open(fileName, 'w') as outputFile:
             outputFile.write(outputData)
 
